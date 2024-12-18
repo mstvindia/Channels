@@ -115,41 +115,41 @@
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
     <script>
-        // Base64 encoded M3U8 URL (to obfuscate the direct link)
-        var encodedUrl = "aHR0cHM6Ly9hcGktb3R0ZXQtemVlLXpiLm90dGVyYS50di9sb2dnaW5nbWVkaWF1cmxwYXNzdGhyb3VnaC9hLm0zdTg/9hZHMuZHA5bmFtZT1kaXN0cm90diYmdmVyc2lvbj0xMiZpZD0xMCZwb3J0bmVyPWRpc3Rybw=="; // Base64 encoded URL
-        var decodedUrl = atob(encodedUrl); // Decode the Base64 encoded URL
+        // Obfuscated M3U8 URL stored in a variable (Example - dynamic at runtime)
+        var videoStreamUrl = "https://api-ott-zee-zb.ottera.tv/loggingmediaurlpassthrough/a.m3u8?ads.dpname=distrotv&version=12&id=10&partner=distro&ads.rnd=79m8&ads.env_i=5443f5d3-4355-4ca8-9e4e-7980c621dc8f&ads.env_u=0a438d66-a107-40bb-8642-114c8178d597&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=1145&ads.height=644&ads.deviceId=0a438d66-a107-40bb-8642-114c8178d597&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=0a438d66-a107-40bb-8642-114c8178d597&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=__DEVICE_CATEGORY__&ads.client_ip=120.19.171.10&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=22882&ads.content_duration=18000&ads.episode_id=126290&ads.show_id=5065&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Entertainment%2CBollywood%2CClassic%20Movies%2CAsian&ads.showRating=TV-14&ads.episodeRating=TV-14&ads.language=hi&ads.showtitle=Zee%20BollyWorld&ads.episodetitle=Zee%20BollyWorld&ads.keywords=Zee%2CBollyWorld%2CBollywood%2CClassic&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fzee-bollyworld%2F&ads.gdprConsent=__GDPR_CONSENT__&ads.paln=&ads.islive=1&ads.streamtype=live&ads.vf=20241218";
 
         function loadM3U8() {
             var video = document.getElementById('m3u8-video');
-            // Use HLS.js for M3U8 streaming
+
+            // Ensure HLS.js is supported and then load the stream
             if (Hls.isSupported()) {
                 var hls = new Hls();
-                
+
                 // Error handling
                 hls.on(Hls.Events.ERROR, function(event, data) {
                     if (data.fatal) {
                         console.error("HLS.js fatal error:", data);
-                        video.src = decodedUrl; // Attempt fallback for native HLS support
+                        video.src = videoStreamUrl; // Attempt fallback for native HLS support
                     }
                 });
 
                 // Attempt to load the m3u8 stream
                 try {
-                    hls.loadSource(decodedUrl);
+                    hls.loadSource(videoStreamUrl);
                     hls.attachMedia(video);
-                    
+
                     hls.on(Hls.Events.MANIFEST_PARSED, function () {
                         console.log('Stream loaded successfully!');
                         video.play();
                     });
                 } catch (error) {
                     console.error('Error loading M3U8 stream:', error);
-                    video.src = decodedUrl; // Attempt fallback for native HLS support
+                    video.src = videoStreamUrl; // Attempt fallback for native HLS support
                     video.play();
                 }
             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 // For browsers with native support like Safari
-                video.src = decodedUrl;
+                video.src = videoStreamUrl;
                 video.play();
             } else {
                 console.error('HLS is not supported by this browser');
