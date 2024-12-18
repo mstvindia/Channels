@@ -9,44 +9,44 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #181818; /* Dark background color for the page */
+            background-color: #181818;
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: center; /* Center content vertically */
-            align-items: center; /* Center content horizontally */
-            min-height: 100vh; /* Full viewport height */
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
             text-align: center;
         }
 
         header {
-            margin-top: 20px; /* Space above the header */
-            text-align: center; /* Center the text */
+            margin-top: 20px;
+            text-align: center;
             color: white;
         }
 
         h1 {
-            font-size: 72px; /* Increased font size for main title */
+            font-size: 72px;
             background: linear-gradient(to right, #ff6347, #1e90ff, #32cd32, #ff1493);
             -webkit-background-clip: text;
-            color: transparent; /* Make text transparent and apply gradient */
+            color: transparent;
             margin: 0;
         }
 
         h2 {
-            font-size: 24px; /* Slogan font size */
-            color: yellow; /* Yellow color for the slogan */
-            margin-top: 10px; /* Space below the title */
+            font-size: 24px;
+            color: yellow;
+            margin-top: 10px;
         }
 
         section {
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center video players horizontally */
-            justify-content: center; /* Center vertically as well */
-            gap: 40px; /* Space between video containers */
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
             width: 100%;
-            max-width: 960px; /* Match the section width with header width */
+            max-width: 960px;
             padding: 20px;
         }
 
@@ -58,19 +58,19 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            width: 100%; /* Full width of the video container */
-            background-color: transparent; /* Transparent background for video containers */
+            width: 100%;
+            background-color: transparent;
         }
 
         .video-container h3 {
             margin: 0 0 15px;
-            font-size: 20px; /* Reduced font size for video channel name */
-            color: magenta; /* Magenta color for the channel name */
+            font-size: 20px;
+            color: magenta;
         }
 
         iframe, video {
-            width: 560px; /* Standard video player size */
-            height: 315px; /* Standard video player size */
+            width: 560px;
+            height: 315px;
         }
 
         footer {
@@ -86,24 +86,16 @@
 </head>
 <body>
 
-    <!-- Header Section -->
     <header>
         <h1>MSTV INDIA</h1>
         <h2>APNA DESH APNI BOLI</h2>
     </header>
 
     <section>
-        <!-- Video Container for YouTube Embed -->
-        <div class="video-container">
-            <h3>NEWS18 PUNJABI</h3>
-            <iframe src="https://www.youtube.com/embed/NE23pfWP-yw?si=xOqf7glynEW-Qfz7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </div>
-
         <!-- Video Container for M3U8 Stream -->
         <div class="video-container">
-            <h3>YouTube Channel 2</h3>
-            <video controls>
-                <source src="https://path-to-your-m3u8-file.m3u8" type="application/x-mpegURL">
+            <h3>NEWS24 LIVE</h3>
+            <video id="m3u8-video" controls>
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -112,6 +104,54 @@
     <footer>
         <p>Created with ❤️ by [Your Name]</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <script>
+        function loadM3U8() {
+            var video = document.getElementById('m3u8-video');
+            var m3u8Url = 'https://vidcdn.vidgyor.com/news24-origin/liveabr/playlist.m3u8';
+
+            // Ensure HLS.js is supported and then load the stream
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                
+                // Error handling
+                hls.on(Hls.Events.ERROR, function(event, data) {
+                    if (data.fatal) {
+                        console.error("HLS.js fatal error:", data);
+                        video.src = m3u8Url; // Attempt fallback for native HLS support
+                    }
+                });
+
+                // Attempt to load the m3u8 stream
+                try {
+                    hls.loadSource(m3u8Url);
+                    hls.attachMedia(video);
+                    
+                    hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                        console.log('Stream loaded successfully!');
+                        video.play();
+                    });
+                } catch (error) {
+                    console.error('Error loading M3U8 stream:', error);
+                    video.src = m3u8Url; // Attempt fallback for native HLS support
+                    video.play();
+                }
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                // For browsers with native support like Safari
+                video.src = m3u8Url;
+                video.play();
+            } else {
+                console.error('HLS is not supported by this browser');
+            }
+        }
+
+        // Wait for the page to fully load before loading the m3u8 stream
+        window.onload = function() {
+            setTimeout(loadM3U8, 1000); // Delay loading by 1 second
+        };
+    </script>
 
 </body>
 </html>
