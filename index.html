@@ -17,17 +17,20 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            text-align: center;
         }
         .container {
             text-align: center;
             padding: 20px;
             max-width: 1200px;
             margin: auto;
+            z-index: 1;  /* Ensures content is above the background */
         }
         h1 {
             font-size: 3.5em;
             color: #FF4500; /* Eye-catching bright orange */
             text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
+            margin-top: 20px; /* Adjust space above */
             margin-bottom: 10px;
         }
         h2 {
@@ -48,27 +51,29 @@
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
+        /* Ensure the header and content are always visible in the viewport */
+        .header-section {
+            margin-top: 50px; /* Adds space before the header */
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header with MSTV INDIA text -->
-        <h1>MSTV INDIA</h1>
+        <!-- Header Section -->
+        <div class="header-section">
+            <h1>MSTV INDIA</h1>
+            <h2>MERĀ DESH MERI BHĀSHĀ</h2>
+            <p>&#169; Mstv India Pty Ltd, USA</p>
+        </div>
         
-        <!-- Slogan below the header -->
-        <h2>MERĀ DESH MERI BHĀSHĀ</h2>
-        
-        <!-- Copyright information -->
-        <p>&#169; Mstv India Pty Ltd, USA</p>
-        
-        <!-- Example of embedding an m3u8 video -->
+        <!-- Video Section -->
         <h2>Watch This Video</h2>
         <video id="video" controls autoplay>
             <source src="https://path-to-your-video/video.m3u8" type="application/x-mpegURL">
             Your browser does not support the video tag.
         </video>
 
-        <!-- Example of embedding a YouTube iframe -->
+        <!-- YouTube Embed Section -->
         <h2>Watch This YouTube Video</h2>
         <iframe src="https://www.youtube.com/embed/your-video-id?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
     </div>
