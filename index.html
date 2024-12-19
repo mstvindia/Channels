@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Awesome Webpage</title>
     <style>
-        /* Add some basic styling */
         body {
             background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
             background-size: cover;
@@ -14,12 +13,14 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
         }
         .container {
             text-align: center;
+            padding: 20px;
         }
         h1 {
             font-size: 3em;
@@ -28,6 +29,7 @@
         iframe, video {
             width: 80%;
             max-width: 1200px;
+            margin: 20px 0;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
@@ -39,20 +41,14 @@
         
         <!-- Example of embedding an m3u8 video -->
         <h2>Watch This Video</h2>
-        <video id="video" controls width="80%" autoplay>
+        <video id="video" controls autoplay>
             <source src="https://path-to-your-video/video.m3u8" type="application/x-mpegURL">
             Your browser does not support the video tag.
         </video>
-        
-        <!-- Example of embedding an iframe -->
-        <h2>Embedded Iframe</h2>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/HGgivuVAgGQ?si=TUbIRT32Y8G0ZAVu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
-        <!-- Example of embedding an MP4 video -->
-        <h2>MP4 Video</h2>
-        <video controls>
-            <source src="https://path-to-your-video/video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+
+        <!-- Example of embedding a YouTube iframe -->
+        <h2>Watch This YouTube Video</h2>
+        <iframe src="https://www.youtube.com/embed/your-video-id?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
     </div>
 </body>
 </html>
