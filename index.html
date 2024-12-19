@@ -10,6 +10,23 @@
             text-align: center;
             background-color: #f0f0f0;
         }
+        h1 {
+            font-size: 48px;
+            background: linear-gradient(to right, #ff3366, #33ccff, #ffcc00, #00cc66);
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 20px 0;
+        }
+        h2 {
+            font-size: 24px;
+            color: yellow;
+            margin: 10px 0;
+        }
+        p {
+            font-size: 16px;
+            color: #333;
+            margin: 10px 0;
+        }
         video {
             width: 100%;
             max-width: 800px;
@@ -26,7 +43,14 @@
     </style>
 </head>
 <body>
-    <h1>My Video Webpage</h1>
+    <!-- Main Heading -->
+    <h1>MSTV INDIA</h1>
+
+    <!-- Slogan -->
+    <h2>APNA DESH APNE BHASHA</h2>
+
+    <!-- Copyright Text -->
+    <p>© copyright Mstv India all rights reserved 2024-25, USA.</p>
 
     <!-- YouTube Embed -->
     <iframe width="560" height="315" src="https://www.youtube.com/embed/KMWcefrAKLg?si=v-GOjXQnLv7vaMHq" 
@@ -44,7 +68,7 @@
         if (Hls.isSupported()) {
             var video = document.getElementById('video');
             var hls = new Hls();
-            hls.loadSource('https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mastiii/master.m3u8?ads.dpname=distrotv&ads.rnd=zl6j&ads.env_i=068ca77d-3362-48f5-b990-d01b5f266806&ads.env_u=0a438d66-a107-40bb-8642-114c8178d597&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=1145&ads.height=644&ads.deviceId=0a438d66-a107-40bb-8642-114c8178d597&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=0a438d66-a107-40bb-8642-114c8178d597&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=__DEVICE_CATEGORY__&ads.client_ip=120.21.6.134&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=23199&ads.content_duration=18000&ads.episode_id=56052&ads.show_id=1744&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Music%2CBollywood%2CMusic%20Video%2CAsian&ads.showRating=TV-PG&ads.episodeRating=TV-PG&ads.language=hi&ads.showtitle=Mastiii%20-%20India%27s%20No.1%20Music%20and%20Youth%20Channel&ads.episodetitle=Mastiii%20-%20India%27s%20No.1%20Music%20and%20Youth%20Channel&ads.keywords=mastiii%2Chindi%2Cdesi&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fmastiii%2F&ads.gdprConsent=__GDPR_CONSENT__&ads.paln=&ads.tagname=dtv&ads.islive=1&ads.streamtype=live&ads.vf=20241219' );
+            hls.loadSource('https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mastiii/master.m3u8?ads.dpname=distrotv&ads.rnd=zl6j&ads.env_i=068ca77d-3362-48f5-b990-d01b5f266806&ads.env_u=0a438d66-a107-40bb-8642-114c8178d597&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=1145&ads.height=644&ads.deviceId=0a438d66-a107-40bb-8642-114c8178d597&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=0a438d66-a107-40bb-8642-114c8178d597&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=__DEVICE_CATEGORY__&ads.client_ip=120.21.6.134&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=23199&ads.content_duration=18000&ads.episode_id=56052&ads.show_id=1744&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Music%2CBollywood%2CMusic%20Video%2CAsian&ads.showRating=TV-PG&ads.episodeRating=TV-PG&ads.language=hi&ads.showtitle=Mastiii%20-%20India%27s%20No.1%20Music%20and%20Youth%20Channel&ads.episodetitle=Mastiii%20-%20India%27s%20No.1%20Music%20and%20Youth%20Channel&ads.keywords=mastiii%2Chindi%2Cdesi&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fmastiii%2F&ads.gdprConsent=__GDPR_CONSENT__&ads.paln=&ads.tagname=dtv&ads.islive=1&ads.streamtype=live&ads.vf=20241219');
             hls.attachMedia(video);
             hls.on(Hls.Events.MANIFEST_PARSED, function() {
                 video.play();
