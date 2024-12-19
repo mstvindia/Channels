@@ -45,13 +45,13 @@
             margin-top: 10px;
         }
 
-        /* Added Image Style for tv channels */
+        /* Added Image Style */
         .header-img {
             width: 100%;
-            max-width: 600px;  /* Adjust image size */
+            max-width: 500px;  /* Limit image width */
             height: auto;
             margin-top: 20px;
-            margin-bottom: 20px;  /* Add spacing below image */
+            margin-bottom: 20px;  /* Added spacing below image */
             display: block;  /* Ensure it's a block-level element */
             background-color: transparent; /* Make sure background is transparent */
         }
@@ -155,8 +155,8 @@
         <h3>© 2024-25 MSTV India Pvt Ltd, United Kingdom</h3> <!-- Added copyright line -->
     </header>
 
-    <!-- Image for TV Channels -->
-    <img class="header-img" src="images/tv_channels.png" alt="TV Channels" />
+    <!-- Image with transparent background -->
+    <img class="header-img" src="images/tv_channels.png" alt="MSTV Logo" /> <!-- Updated path -->
 
     <section>
         <!-- Video Container for M3U8 Stream -->
@@ -215,7 +215,7 @@
                 console.error('HLS is not supported by this browser');
             }
 
-            // Set volume to 100% (Maximum) for a ~20dB increase
+            // Set volume to 100% (Maximum) for a ~50dB increase
             video.volume = 1.0; // Set volume to 100% (max volume)
         }
 
