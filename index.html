@@ -52,12 +52,14 @@
             padding: 20px;
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
+            width: 100%;
+            max-width: 800px; /* Ensure the max-width is the same for both video players */
         }
 
         /* Video Styles */
         video {
             width: 100%;
-            max-width: 800px;
+            height: 450px; /* Fixed height for consistency */
             border-radius: 10px;
             display: block;
         }
@@ -65,8 +67,7 @@
         /* Embed Styles */
         iframe {
             width: 100%;
-            height: 500px;
-            max-width: 800px;
+            height: 450px; /* Fixed height for consistency */
             border-radius: 10px;
             margin: 20px auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
@@ -86,7 +87,7 @@
     <p>© copyright Mstv India all rights reserved 2024-25, USA.</p>
 
     <!-- YouTube Embed -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/KMWcefrAKLg?si=v-GOjXQnLv7vaMHq" 
+    <iframe src="https://www.youtube.com/embed/KMWcefrAKLg?si=v-GOjXQnLv7vaMHq" 
     title="YouTube video player" frameborder="0" 
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
     allowfullscreen></iframe>
