@@ -15,22 +15,20 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            height: 100vh;
-            text-align: center;
+            justify-content: flex-start; /* Align items to the top */
+            min-height: 100vh; /* Ensure the page takes up the entire screen */
         }
         .container {
             text-align: center;
             padding: 20px;
             max-width: 1200px;
-            margin: auto;
+            margin-top: 80px; /* Adds more space before the header */
             z-index: 1;  /* Ensures content is above the background */
         }
         h1 {
             font-size: 3.5em;
             color: #FF4500; /* Eye-catching bright orange */
             text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
-            margin-top: 20px; /* Adjust space above */
             margin-bottom: 10px;
         }
         h2 {
@@ -51,9 +49,9 @@
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
-        /* Ensure the header and content are always visible in the viewport */
+        /* Ensure that everything stays visible */
         .header-section {
-            margin-top: 50px; /* Adds space before the header */
+            margin-top: 0; /* Removed top margin to ensure it starts right at the top */
         }
     </style>
 </head>
