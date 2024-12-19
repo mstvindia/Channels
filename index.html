@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Awesome Webpage</title>
     <style>
+        /* Add some basic styling */
         body {
             background: url('https://via.placeholder.com/1920x1080') no-repeat center center fixed;
             background-size: cover;
@@ -13,14 +14,12 @@
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
         }
         .container {
             text-align: center;
-            padding: 20px;
         }
         h1 {
             font-size: 3em;
@@ -29,7 +28,6 @@
         iframe, video {
             width: 80%;
             max-width: 1200px;
-            margin: 20px 0;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
@@ -41,14 +39,20 @@
         
         <!-- Example of embedding an m3u8 video -->
         <h2>Watch This Video</h2>
-        <video id="video" controls autoplay>
-            <source src="https://path-to-your-video/video.m3u8" type="application/x-mpegURL">
+        <video id="video" controls width="80%" autoplay>
+            <source src="https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/euronews/euronews-en.m3u8?ads.dpname=distrotv&ads.rnd=ab2r&ads.env_i=f92b7bd6-5659-44cc-8799-935951ecaf9a&ads.env_u=0a438d66-a107-40bb-8642-114c8178d597&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=1145&ads.height=644&ads.deviceId=0a438d66-a107-40bb-8642-114c8178d597&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=0a438d66-a107-40bb-8642-114c8178d597&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=__DEVICE_CATEGORY__&ads.client_ip=120.21.6.134&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=22886&ads.content_duration=18000&ads.episode_id=45143&ads.show_id=1244&ads.showCategories=IAB12&ads.episodeCategories=IAB12&ads.genre=News%2CGlobal%20News%2CEnglish&ads.showRating=TV-PG&ads.episodeRating=TV-PG&ads.language=en&ads.showtitle=Euronews&ads.episodetitle=Euronews&ads.keywords=euronnews&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Feuronews%2F&ads.gdprConsent=__GDPR_CONSENT__&ads.paln=&ads.tagname=dtv&ads.islive=1&ads.streamtype=live&ads.vf=20241219" type="application/x-mpegURL">
             Your browser does not support the video tag.
         </video>
-
-        <!-- Example of embedding a YouTube iframe -->
-        <h2>Watch This YouTube Video</h2>
-        <iframe src="https://www.youtube.com/embed/your-video-id?autoplay=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+        
+        <!-- Example of embedding an iframe -->
+        <h2>Embedded Iframe</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/HGgivuVAgGQ?si=TUbIRT32Y8G0ZAVu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
+        <!-- Example of embedding an MP4 video -->
+        <h2>MP4 Video</h2>
+        <video controls>
+            <source src="https://path-to-your-video/video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
 </body>
 </html>
