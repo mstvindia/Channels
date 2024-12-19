@@ -13,16 +13,16 @@
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start; /* Start from the top */
             align-items: center;
             min-height: 100vh;
             text-align: center;
         }
 
         header {
-            margin-top: 20px;
             text-align: center;
             color: white;
+            padding-top: 10px; /* Added padding for top gap */
         }
 
         h1 {
@@ -54,6 +54,7 @@
             width: 100%;
             max-width: 960px;
             padding: 20px;
+            flex-grow: 1; /* Ensures this section takes available space */
         }
 
         .video-container {
