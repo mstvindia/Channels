@@ -17,6 +17,7 @@
             align-items: center;
             flex-direction: column;
             text-align: center;
+            overflow: hidden;
         }
 
         /* Main Heading */
@@ -64,15 +65,29 @@
             display: block;
         }
 
-        /* Embed Styles */
+        /* Embed Styles for YouTube */
         iframe {
             width: 100%;
-            height: 100%; /* Set height to 100% of the container */
+            height: 100%;
             border-radius: 10px;
             margin: 20px auto;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            /* Make iframe square by forcing width to equal height */
-            aspect-ratio: 1;  /* Set the aspect ratio to 1:1 for a square shape */
+            /* Maintain square aspect ratio for YouTube */
+            aspect-ratio: 1;  /* Set aspect ratio to 1:1 for square */
+            max-width: 450px; /* Limit max width to ensure it's not too big */
+            max-height: 450px; /* Limit max height to ensure it's not too big */
+        }
+
+        /* Container for both videos (YouTube + M3U8) */
+        .video-container-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
         }
 
     </style>
@@ -88,15 +103,18 @@
     <!-- Copyright Text -->
     <p>© copyright Mstv India all rights reserved 2024-25, USA.</p>
 
-    <!-- YouTube Embed -->
-    <iframe src="https://www.youtube.com/embed/KMWcefrAKLg?si=v-GOjXqLv7vaMHq" 
-    title="YouTube video player" frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-    allowfullscreen></iframe>
+    <!-- Video Container Wrapper -->
+    <div class="video-container-wrapper">
+        <!-- YouTube Embed -->
+        <iframe src="https://www.youtube.com/embed/KMWcefrAKLg?si=v-GOjXqLv7vaMHq" 
+        title="YouTube video player" frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen></iframe>
 
-    <!-- M3U8 Video Embed (using HLS.js) -->
-    <div id="video-container">
-        <video id="video" controls></video>
+        <!-- M3U8 Video Embed (using HLS.js) -->
+        <div id="video-container">
+            <video id="video" controls></video>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
