@@ -158,8 +158,8 @@
                 console.error('HLS is not supported by this browser');
             }
 
-            // Set volume to approximately 12db
-            video.volume = 0.5; // 50% volume (~12dB drop)
+            // Set volume to 100% (Maximum) for a ~20dB increase
+            video.volume = 1.0; // Set volume to 100% (max volume)
         }
 
         // Wait for the page to fully load before loading the m3u8 stream
