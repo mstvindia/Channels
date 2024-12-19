@@ -5,44 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Webpage</title>
     <style>
+        /* Apply vibrant gradient background */
         body {
             font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff3366, #33ccff, #ffcc00, #00cc66);
+            color: #fff;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
             text-align: center;
-            background-color: #f0f0f0;
         }
+
+        /* Main Heading */
         h1 {
             font-size: 48px;
             background: linear-gradient(to right, #ff3366, #33ccff, #ffcc00, #00cc66);
             -webkit-background-clip: text;
             color: transparent;
             margin: 20px 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
+
+        /* Slogan */
         h2 {
             font-size: 24px;
             color: yellow;
             margin: 10px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
+
+        /* Copyright Text */
         p {
             font-size: 16px;
-            color: #333;
+            color: #fff;
             margin: 10px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
+
+        /* Video Container */
+        #video-container {
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+
+        /* Video Styles */
         video {
             width: 100%;
             max-width: 800px;
-            margin: 20px auto;
+            border-radius: 10px;
             display: block;
         }
+
+        /* Embed Styles */
         iframe {
             width: 100%;
             height: 500px;
             max-width: 800px;
+            border-radius: 10px;
             margin: 20px auto;
-            display: block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
         }
+
     </style>
 </head>
 <body>
+
     <!-- Main Heading -->
     <h1>MSTV INDIA</h1>
 
