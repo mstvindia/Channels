@@ -189,6 +189,31 @@
         }
     }
 </script>
+<script>
+        const video = document.getElementById("videoPlayer");
+
+        // Create a new AudioContext
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        
+        // Create a media element source node from the video
+        const mediaElementSource = audioContext.createMediaElementSource(video);
+        
+        // Create a Gain node to control volume
+        const gainNode = audioContext.createGain();
+
+        // Connect the source to the gain node
+        mediaElementSource.connect(gainNode);
+
+        // Connect the gain node to the audio context's destination (speakers)
+        gainNode.connect(audioContext.destination);
+
+        // Set the gain value (volume control)
+        // Gain value of 9.0 will make the volume 900% (9 times louder)
+        gainNode.gain.value = 9.0; // 900% volume
+
+        // Optionally, adjust video volume (for the default behavior)
+        video.volume = 1; // Set video player volume to maximum (this is not necessary for the Web Audio API method but can be used as fallback)
+    </script>
 
 </body>
 </html>
