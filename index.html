@@ -117,7 +117,8 @@
             <option value="4">PITAARA CHANNEL</option>
             <option value="5">PITAARA COMEDY</option>
             <option value="6">COLORS CHANNEL USA</option> <!-- New option for iframe -->
-            <option value="7">PTC NEWS</option>
+            <option value="7">PTC NEWS $ (ONLY AUSTRALIA)</option>
+            <option value="8">SONY KAL</option>
         </select>
     </div>
 
@@ -170,11 +171,15 @@
             url: "https://enz.gdplayertv.to/embed/colors-hindi-my/"
         },
         "7": {
-            name: "PTC NEWS",
+            name: "PTC NEWS $ (ONLY AUSTRALIA)",
             type: "m3u8",
             url: "https://streaming.ptcplay.com/PTCNEWSINONE/smil:Live.smil/playlist.m3u8"
-        }
-
+        },
+        "8": {
+            name: "SONY KAL",
+            type: "m3u8",
+            url: "https://spt-sonykal-1-us.lg.wurl.tv/playlist.m3u8"
+            }
     };
 
     let iframePlayer = document.getElementById('iframePlayer');
