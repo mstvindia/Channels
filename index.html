@@ -106,11 +106,11 @@
         <img src="https://github.com/mstvindia/Channels/blob/main/remote-control.png?raw=true" alt="Channel Icon">
         <select id="channelSelect" onchange="loadChannel()">
             <option value="">Select Channel</option>
-            <option value="1">NEWS18 PUNJABI</option>
-            <option value="2">SONY KAL</option>
-            <option value="3">DD PUNJABI</option>
-            <option value="4">CNN News18</option>
-            <option value="5">COLORS TV USA</option>
+            <option value="1">PUNJABI HITS</option>
+            <option value="2">MASTII MUSIC</option>
+            <option value="3">ZEE BOLLYWORLD</option>
+            <option value="4">PITAARA CHANNEL</option>
+            <option value="5">PITAARA COMEDY</option>
         </select>
     </div>
 
@@ -129,28 +129,28 @@
     const channels = {
         "1": {
             name: "",
-            type: "youtube",
-            url: "https://www.youtube.com/embed/BeeVt8rKjFM?si=ZdF1fSvOeio6z19R"
+            type: "m3u8",
+            url: "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/punjabi-hits/master.m3u8?ads.dpname=distrotv&ads.rnd=k7jq&ads.env_i=15a98217-65e3-4b27-94e6-40b029b3676e&ads.env_u=2a1404cc-ea97-438d-9d5b-7b82371edd0f&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=349&ads.height=196&ads.deviceId=2a1404cc-ea97-438d-9d5b-7b82371edd0f&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=2a1404cc-ea97-438d-9d5b-7b82371edd0f&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=_DEVICE_CATEGORY&ads.client_ip=120.19.171.10&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=23196&ads.content_duration=18000&ads.episode_id=135913&ads.show_id=5235&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Music%2CEntertainment%2CAsian&ads.showRating=TV-G&ads.episodeRating=TV-G&ads.language=pa&ads.showtitle=Punjabi%20Hits&ads.episodetitle=Punjabi%20Hits&ads.keywords=Punjabi%20Music%2CLatest%20Punjabi%20Songs%2CPunjabi%20Songs%2CTrending%20Punjabi%20Songs&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fpunjabi-hits%2F&ads.gdprConsent=GDPR_CONSENT_&ads.paln=AQzzBGQE07Nw34u7S2WNp9fDnwHTL5SghCNCZLcXH4VrDaC1xTis0n9fkRek37KJbXjNJAAdQ3mLR14oNPIKV1q2imUKOq48kyuwGs3cdWh2fQ-DXAORvbkeAEYIzDCsc9WOVyz3i1RMxXx2LbAd9NFtcP-kNC0qsXiYVWPdTYbxmdBZlhaaBtYK_02Dwewubfm_t5ph7_vq9ETS5ZhrcBMa9Rt--Q4wos8TaY0e-srS2uo9O0yzLZfGOHD2-M7VmrtErA4y2uLhnEB4S67kmryecu5LwOC5SM7U9PvAWN8EHdgLisTwq7xGGLZxLibAUR7A-0XiAamrq3U4N6xRF1FGo-4aAMnZDxhYmRSo_9DkNp2xfERZ13JQduPCQq316diqMX0GLEq8MCc0O5nMjyeEbrNe_uiSl43OFZmhIy6Kj6iXIQ8gUUH0cfYS6Lp-G0a8CIBZaxQAFcdF-JiZ4qnjFgBMhdufgkTn9IevF8lwyDKAh5MfIKjhRLA_thjHrGFkIoezjyDvMtQc4HpzgCG7dlCF2MvNw5xEO1sK5DfVEmet-P8nJym0oNKdZ3qDXaR8-9kq68zNpkoXjBsGq5rRGMgDYdxPh_U_9w5ts4ufe2hjWMVKsH7zZ6drYGylSsxrPqxFofxtCvpX4i-z483HCeZg8yDcTgOnyIEvQz3ZgNmjjF32VVaYZlTFUBKmbpVvc6mmLeWaTk4kczotKNHf8sNvnL3FjrQwNdH907kvgrxnrLwmlFCrW2UbdtXEyCLTYYX2o2gB16iT2MxIsiHvETfP6Y8lSkaTWpYbNTB4NEFrEfOzXPKSiMIpBzTN67GKIT3JRe-y2suZA8_ZFMObrugpzhx1_pgZ68U0l3F00rCdsqyCpDgbYCArKQNuM9NbXQQ048L5K290yHngsDt2jDv_djVRVoTVwrXVOWAS4xVINqgslYrJgoQNyHs0JGbGHr68vjaEbJs6iDC11lYGbR-P63UThdvHL59M2Wv8k_RugkpKQzPN1QE8uZt6TIzHme1DfzecJapfnIu6kyIC27ywvsKztgL1csyfmdh398BGN9GUCuqa2yg-AzPM24MYm26T1Iqqzise1EBHTSOoRUL7or56NIXaISXnXBrydNb7Kelokb8vxQYuAQlzBKgDtDsLtgcLbGmOgKkzzFge4ZYtL2IO6Of6TaF6IhxM-fwoamUJISHrQWA89HT13iR5p-vIisTprTsC_STf1LT6gmDNhriLKb4u1uoU1mY8KzmIOxGuf6PapTJ9p0XZQfvxeA9u4axzyKUb5JeMeVJ_CdjIzjBoxcJ35H6X&ads.tagname=dtv&ads.islive=1&ads.streamtype=live&ads.vf=20241218"
         },
         "2": {
             name: "",
             type: "m3u8",
-            url: "https://spt-sonykal-1-us.lg.wurl.tv/playlist.m3u8"
+            url: "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/mastiii/master.m3u8?ads.dpname=distrotv&ads.rnd=ojwt&ads.env_i=874f71be-5b80-495d-af1e-7dbfd0658c03&ads.env_u=22db993f-234d-4370-83e2-c0139011297a&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=349&ads.height=196&ads.deviceId=22db993f-234d-4370-83e2-c0139011297a&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=22db993f-234d-4370-83e2-c0139011297a&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=_DEVICE_CATEGORY&ads.client_ip=120.19.162.252&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=23199&ads.content_duration=18000&ads.episode_id=56052&ads.show_id=1744&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Music%2CBollywood%2CMusic%20Video%2CAsian&ads.showRating=TV-PG&ads.episodeRating=TV-PG&ads.language=hi&ads.showtitle=Mastiii%20-%20India%27s%20No.1%20Music%20and%20Youth%20Channel&ads.episodetitle=Mastiii%20-%20India%27s%20No.1%20Music%20and%20Youth%20Channel&ads.keywords=mastiii%2Chindi%2Cdesi&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fmastiii%2F&ads.gdprConsent=GDPR_CONSENT_&ads.paln=&ads.tagname=dtv&ads.islive=1&ads.streamtype=live&ads.vf=20241219"
         },
         "3": {
             name: "",
             type: "m3u8",
-            url: "https://www.youtube.com/live/yoohOH0v1cg?si=CNzv1eRgkMg5j8RL"
+            url: "https://api-ott-zee-zb.ottera.tv/loggingmediaurlpassthrough/a.m3u8?ads.dpname=distrotv&version=12&id=10&partner=distro&ads.rnd=ohzm&ads.env_i=8a515d3c-8b62-48f2-ad42-8dfe58ea5492&ads.env_u=22db993f-234d-4370-83e2-c0139011297a&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=349&ads.height=196&ads.deviceId=22db993f-234d-4370-83e2-c0139011297a&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=22db993f-234d-4370-83e2-c0139011297a&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=_DEVICE_CATEGORY&ads.client_ip=120.19.162.252&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=22882&ads.content_duration=18000&ads.episode_id=126290&ads.show_id=5065&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Entertainment%2CBollywood%2CClassic%20Movies%2CAsian&ads.showRating=TV-14&ads.episodeRating=TV-14&ads.language=hi&ads.showtitle=Zee%20BollyWorld&ads.episodetitle=Zee%20BollyWorld&ads.keywords=Zee%2CBollyWorld%2CBollywood%2CClassic&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fzee-bollyworld%2F&ads.gdprConsent=GDPR_CONSENT_&ads.paln=&ads.islive=1&ads.streamtype=live&ads.vf=20241219"
         },
         "4": {
             name: "",
             type: "m3u8",
-            url: "https://n18syndication.akamaized.net/bpk-tv/CNN_News18_NW18_MOB/output01/index.m3u8"
+            url: "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/pitaara-tv/playlist.m3u8?ads.dpname=distrotv&ads.rnd=4q1s&ads.env_i=6455574b-80fc-4bd0-a8ac-667cb6654fe4&ads.env_u=22db993f-234d-4370-83e2-c0139011297a&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=349&ads.height=196&ads.deviceId=22db993f-234d-4370-83e2-c0139011297a&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=22db993f-234d-4370-83e2-c0139011297a&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=_DEVICE_CATEGORY&ads.client_ip=120.19.162.252&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=23049&ads.content_duration=18000&ads.episode_id=79804&ads.show_id=3132&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Entertainment%2CMovies%2CAsian&ads.showRating=TV-14&ads.episodeRating=TV-14&ads.language=pa&ads.showtitle=Pitaara%20TV&ads.episodetitle=Pitaara%20TV&ads.keywords=Pitaara%2Cdesi&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fpitaara-tv%2F&ads.gdprConsent=GDPR_CONSENT_&ads.paln=&ads.tagname=dtv&ads.islive=1&ads.streamtype=live&ads.vf=20241219"
         },
         "5": {
             name: "",
             type: "m3u8",
-            url: "<iframe src='https://enz.gdplayertv.to/embed/colors-hindi-my/' width='640' height='320' scrolling='no' frameborder='0' loading='lazy' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; geolocation; web-share; speaker-selection; screen-wake-lock; idle-detection' allowfullscreen></iframe>"
+            url: "https://vg-pitaaratvyupp.akamaized.net/ptnr-yupptv/title-Pitaara_Comedy/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-343626/playlist.m3u8?hdnts=st=1734616667~exp=1734620267~acl=!/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-343626/!yuppTVCom_61_-1_d8a4cc651a1c4c8e_AU_120.19.162.252/payload/yuppTVCom_61_-1_d8a4cc651a1c4c8e_AU_120.19.162.252/*~hmac=d5df2dd45eaf713cbe00a224ab5c895e5968a4d8b3927d00d4b4e9ab364d4071&ads.app_bundle=&ads.app_store_url=&ads.content_livestream=1&ads.language=PUN&ads.content_genre=ENT&ads.channel=6918&ads.channel_name=PitaaraComedy&ads.network_name=yupptv&ads.user=0"
         }
     };
 
