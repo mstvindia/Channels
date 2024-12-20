@@ -151,7 +151,7 @@
         "3": {
             name: "Zee Bollyworld",
             type: "m3u8",
-            url: "https://api-ott-zee-zb.ottera.tv/loggingmediaurlpassthrough/a.m3u8"
+            url: "https://api-ott-zee-zb.ottera.tv/loggingmediaurlpassthrough/a.m3u8?ads.dpname=distrotv&version=12&id=10&partner=distro&ads.rnd=ohzm&ads.env_i=8a515d3c-8b62-48f2-ad42-8dfe58ea5492&ads.env_u=22db993f-234d-4370-83e2-c0139011297a&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=349&ads.height=196&ads.deviceId=22db993f-234d-4370-83e2-c0139011297a&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=22db993f-234d-4370-83e2-c0139011297a&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=_DEVICE_CATEGORY&ads.client_ip=120.19.162.252&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=22882&ads.content_duration=18000&ads.episode_id=126290&ads.show_id=5065&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Entertainment%2CBollywood%2CClassic%20Movies%2CAsian&ads.showRating=TV-14&ads.episodeRating=TV-14&ads.language=hi&ads.showtitle=Zee%20BollyWorld&ads.episodetitle=Zee%20BollyWorld&ads.keywords=Zee%2CBollyWorld%2CBollywood%2CClassic&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fzee-bollyworld%2F&ads.gdprConsent=GDPR_CONSENT_&ads.paln=&ads.islive=1&ads.streamtype=live&ads.vf=20241219"
         },
         "4": {
             name: "Pitaara Channel",
@@ -206,17 +206,26 @@
                 hlsInstance.on(Hls.Events.MANIFEST_PARSED, function () {
                     console.log('Manifest loaded, starting playback');
                     video.play();
+                    setMaxVolume(video);  // Set volume to maximum
                 });
             } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = channel.url;
                 video.addEventListener('canplay', function () {
                     video.play();
+                    setMaxVolume(video);  // Set volume to maximum
                 });
             }
         } else if (channel.type === "iframe") {
             // Show iframe player for iframe-based channels
             document.getElementById('iframeContainer').style.display = 'block';
             iframePlayer.src = channel.url; // Set iframe URL dynamically
+        }
+    }
+
+    // Function to set the volume of the video to maximum
+    function setMaxVolume(video) {
+        if (video) {
+            video.volume = 1.0;  // Set volume to maximum (range 0.0 to 1.0)
         }
     }
 
@@ -227,5 +236,6 @@
         }
     }
 </script>
+
 </body>
 </html>
