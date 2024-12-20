@@ -208,8 +208,8 @@
         gainNode.connect(audioContext.destination);
 
         // Set the gain value (volume control)
-        // Gain value of 20.0 will make the volume 2000% (exteremly high)
-        gainNode.gain.value = 9.0; // 900% volume
+        // Gain value of 50.0 will make the volume 5000% (exteremly high)
+        gainNode.gain.value = 50.0; // 5000% volume
 
         // Optionally, adjust video volume (for the default behavior)
         video.volume = 1; // Set video player volume to maximum (this is not necessary for the Web Audio API method but can be used as fallback)
