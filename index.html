@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,6 +50,11 @@
         .m3u8-player {
             margin-top: 20px;
         }
+        select {
+            padding: 10px;
+            font-size: 1.2em;
+            margin: 10px;
+        }
         /* Ensure responsiveness for mobile */
         @media (max-width: 768px) {
             iframe, video {
@@ -71,16 +76,23 @@
     <h2>Welcome to MSTV INDIA</h2>
     <p>Your source of pure desi entertainment. Enjoy the latest content from India and beyond!</p>
 
-    <!-- Embed YouTube Video -->
-    <div class="m3u8-player">
-        <h3>Watch YouTube Video</h3>
-        <iframe src="https://www.youtube.com/embed/BeeVt8rKjFM?si=ZdF1fSvOeio6z19R" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </div>
+    <!-- Channel Selection Dropdown -->
+    <select id="channelSelect" onchange="loadChannel()">
+        <option value="">Select Channel</option>
+        <!-- Add the URLs below as options -->
+        <option value="1">YouTube Video 1</option>
+        <option value="2">M3U8 Stream 1</option>
+        <option value="3">Iframe Channel 1</option>
+        <option value="4">YouTube Live</option>
+        <option value="5">CNN News18 (M3U8)</option>
+        <option value="6">Colors Hindi Iframe</option>
+        <!-- Add more options as needed -->
+    </select>
 
-    <!-- Embed M3U8 Stream -->
-    <div class="m3u8-player">
-        <h3>Live Stream (M3U8)</h3>
-        <video id="video" controls></video>
+    <!-- Video Player Container -->
+    <div id="videoPlayerContainer" class="m3u8-player">
+        <h3 id="channelName">Select a channel</h3>
+        <div id="player"></div>
     </div>
 </div>
 
@@ -89,25 +101,73 @@
 </div>
 
 <script>
-    // Check if the browser supports HLS.js
-    if (Hls.isSupported()) {
-        var video = document.getElementById('video');
-        var hls = new Hls();
+    const channels = {
+        "1": {
+            name: "YouTube Video 1",
+            type: "youtube",
+            url: "https://www.youtube.com/embed/BeeVt8rKjFM?si=ZdF1fSvOeio6z19R"
+        },
+        "2": {
+            name: "M3U8 Stream 1",
+            type: "m3u8",
+            url: "https://spt-sonykal-1-us.lg.wurl.tv/playlist.m3u8"
+        },
+        "3": {
+            name: "Iframe Channel 1",
+            type: "iframe",
+            url: "<iframe src='https://www.example.com' title='Iframe Channel'></iframe>"
+        },
+        "4": {
+            name: "YouTube Live",
+            type: "youtube",
+            url: "https://www.youtube.com/live/yoohOH0v1cg?si=CNzv1eRgkMg5j8RL"
+        },
+        "5": {
+            name: "CNN News18 (M3U8)",
+            type: "m3u8",
+            url: "https://n18syndication.akamaized.net/bpk-tv/CNN_News18_NW18_MOB/output01/index.m3u8"
+        },
+        "6": {
+            name: "Colors Hindi Iframe",
+            type: "iframe",
+            url: "<iframe src='https://enz.gdplayertv.to/embed/colors-hindi-my/' width='640' height='320' scrolling='no' frameborder='0' loading='lazy' allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen; geolocation; web-share; speaker-selection; screen-wake-lock; idle-detection' allowfullscreen></iframe>"
+        }
+        // Add more channels here if needed
+    };
+
+    function loadChannel() {
+        const channelId = document.getElementById('channelSelect').value;
+        const channel = channels[channelId];
+
+        if (!channel) {
+            document.getElementById('channelName').innerText = 'Select a channel';
+            document.getElementById('player').innerHTML = '';
+            return;
+        }
+
+        document.getElementById('channelName').innerText = channel.name;
         
-        // Replace this URL with your M3U8 URL
-        var m3u8Url = 'https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/punjabi-hits/master.m3u8?ads.dpname=distrotv&ads.rnd=k7jq&ads.env_i=15a98217-65e3-4b27-94e6-40b029b3676e&ads.env_u=2a1404cc-ea97-438d-9d5b-7b82371edd0f&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=349&ads.height=196&ads.deviceId=2a1404cc-ea97-438d-9d5b-7b82371edd0f&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=2a1404cc-ea97-438d-9d5b-7b82371edd0f&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=_DEVICE_CATEGORY&ads.client_ip=120.19.171.10&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=23196&ads.content_duration=18000&ads.episode_id=135913&ads.show_id=5235&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Music%2CEntertainment%2CAsian&ads.showRating=TV-G&ads.episodeRating=TV-G&ads.language=pa&ads.showtitle=Punjabi%20Hits&ads.episodetitle=Punjabi%20Hits&ads.keywords=Punjabi%20Music%2CLatest%20Punjabi%20Songs%2CPunjabi%20Songs%2CTrending%20Punjabi%20Songs&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fpunjabi-hits%2F&ads.gdprConsent=GDPR_CONSENT_&ads.paln=AQzzBGQE07Nw34u7S2WNp9fDnwHTL5SghCNCZLcXH4VrDaC1xTis0n9fkRek37KJbXjNJAAdQ3mLR14oNPIKV1q2imUKOq48kyuwGs3cdWh2fQ-DXAORvbkeAEYIzDCsc9WOVyz3i1RMxXx2LbAd9NFtcP-kNC0qsXiYVWPdTYbxmdBZlhaaBtYK_02Dwewubfm_t5ph7_vq9ETS5ZhrcBMa9Rt--Q4wos8TaY0e-srS2uo9O0yzLZfGOHD2-M7VmrtErA4y2uLhnEB4S67kmryecu5LwOC5SM7U9PvAWN8EHdgLisTwq7xGGLZxLibAUR7A-0XiAamrq3U4N6xRF1FGo-4aAMnZDxhYmRSo_9DkNp2xfERZ13JQduPCQq316diqMX0GLEq8MCc0O5nMjyeEbrNe_uiSl43OFZmhIy6Kj6iXIQ8gUUH0cfYS6Lp-G0a8CIBZaxQAFcdF-JiZ4qnjFgBMhdufgkTn9IevF8lwyDKAh5MfIKjhRLA_thjHrGFkIoezjyDvMtQc4HpzgCG7dlCF2MvNw5xEO1sK5DfVEmet-P8nJym0oNKdZ3qDXaR8-9kq68zNpkoXjBsGq5rRGMgDYdxPh_U_9w5ts4ufe2hjWMVKsH7zZ6drYGylSsxrPqxFofxtCvpX4i-z483HCeZg8yDcTgOnyIEvQz3ZgNmjjF32VVaYZlTFUBKmbpVvc6mmLeWaTk4kczotKNHf8sNvnL3FjrQwNdH907kvgrxnrLwmlFCrW2UbdtXEyCLTYYX2o2gB16iT2MxIsiHvETfP6Y8lSkaTWpYbNTB4NEFrEfOzXPKSiMIpBzTN67GKIT3JRe-y2suZA8_ZFMObrugpzhx1_pgZ68U0l3F00rCdsqyCpDgbYCArKQNuM9NbXQQ048L5K290yHngsDt2jDv_djVRVoTVwrXVOWAS4xVINqgslYrJgoQNyHs0JGbGHr68vjaEbJs6iDC11lYGbR-P63UThdvHL59M2Wv8k_RugkpKQzPN1QE8uZt6TIzHme1DfzecJapfnIu6kyIC27ywvsKztgL1csyfmdh398BGN9GUCuqa2yg-AzPM24MYm26T1Iqqzise1EBHTSOoRUL7or56NIXaISXnXBrydNb7Kelokb8vxQYuAQlzBKgDtDsLtgcLbGmOgKkzzFge4ZYtL2IO6Of6TaF6IhxM-fwoamUJISHrQWA89HT13iR5p-vIisTprTsC_STf1LT6gmDNhriLKb4u1uoU1mY8KzmIOxGuf6PapTJ9p0XZQfvxeA9u4axzyKUb5JeMeVJ_CdjIzjBoxcJ35H6X&ads.tagname=dtv&ads.islive=1&ads.streamtype=live&ads.vf=20241218';
-        
-        hls.loadSource(m3u8Url);
-        hls.attachMedia(video);
-        
-        hls.on(Hls.Events.MANIFEST_PARSED, function() {
-            console.log('Manifest loaded, starting playback');
-            video.play();
-        });
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        // For browsers like Safari that support HLS natively
-        video.src = 'https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/punjabi-hits/master.m3u8?ads.dpname=distrotv&ads.rnd=k7jq&ads.env_i=15a98217-65e3-4b27-94e6-40b029b3676e&ads.env_u=2a1404cc-ea97-438d-9d5b-7b82371edd0f&ads.name=DistroTV&ads.bundle=undefined&ads.storeurl=undefined&ads.appCategory=entertainment&ads.app_version=202105131041&ads.width=349&ads.height=196&ads.deviceId=2a1404cc-ea97-438d-9d5b-7b82371edd0f&ads.deviceDNT=0&ads.gdpr=0&ads.us_privacy=0&ads.aid=2a1404cc-ea97-438d-9d5b-7b82371edd0f&ads.deviceMake=Web&ads.deviceIdType=cookie&ads.deviceConnectionType=2&ads.deviceCategory=_DEVICE_CATEGORY&ads.client_ip=120.19.171.10&ads.geo=AU&ads.lat=-37.81590&ads.long=144.96690&ads.dma=false&ads.geoType=2&ads.contentid=23196&ads.content_duration=18000&ads.episode_id=135913&ads.show_id=5235&ads.showCategories=IAB1&ads.episodeCategories=IAB1&ads.genre=Music%2CEntertainment%2CAsian&ads.showRating=TV-G&ads.episodeRating=TV-G&ads.language=pa&ads.showtitle=Punjabi%20Hits&ads.episodetitle=Punjabi%20Hits&ads.keywords=Punjabi%20Music%2CLatest%20Punjabi%20Songs%2CPunjabi%20Songs%2CTrending%20Punjabi%20Songs&ads.contenturl=https%3A%2F%2Fwww.distro.tv%2Flive%2Fpunjabi-hits%2F&ads.gdprConsent=GDPR_CONSENT_&ads.paln=AQzzBGQE07Nw34u7S2WNp9fDnwHTL5SghCNCZLcXH4VrDaC1xTis0n9fkRek37KJbXjNJAAdQ3mLR14oNPIKV1q2imUKOq48kyuwGs3cdWh2fQ-DXAORvbkeAEYIzDCsc9WOVyz3i1RMxXx2LbAd9NFtcP-kNC0qsXiYVWPdTYbxmdBZlhaaBtYK_02Dwewubfm_t5ph7_vq9ETS5ZhrcBMa9Rt--Q4wos8TaY0e-srS2uo9O0yzLZfGOHD2-M7VmrtErA4y2uLhnEB4S67kmryecu5LwOC5SM7U9PvAWN8EHdgLisTwq7xGGLZxLibAUR7A-0XiAamrq3U4N6xRF1FGo-4aAMnZDxhYmRSo_9DkNp2xfERZ13JQduPCQq316diqMX0GLEq8MCc0O5nMjyeEbrNe_uiSl43OFZmhIy6Kj6iXIQ8gUUH0cfYS6Lp-G0a8CIBZaxQAFcdF-JiZ4qnjFgBMhdufgkTn9IevF8lwyDKAh5MfIKjhRLA_thjHrGFkIoezjyDvMtQc4HpzgCG7dlCF2MvNw5xEO1sK5DfVEmet-P8nJym0oNKdZ3qDXaR8-9kq68zNpkoXjBsGq5rRGMgDYdxPh_U_9w5ts4ufe2hjWMVKsH7zZ6drYGylSsxrPqxFofxtCvpX4i-z483HCeZg8yDcTgOnyIEvQz3ZgNmjjF32VVaYZlTFUBKmbpVvc6mmLeWaTk4kczotKNHf8sNvnL3FjrQwNdH907kvgrxnrLwmlFCrW2UbdtXEyCLTYYX2o2gB16iT2MxIsiHvETfP6Y8lSkaTWpYbNTB4NEFrEfOzXPKSiMIpBzTN67GKIT3JRe-y2suZA8_ZFMObrugpzhx1_pgZ68U0l3F00rCdsqyCpDgbYCArKQNuM9NbXQQ048L5K290yHngsDt2jDv_djVRVoTVwrXVOWAS4xVINqgslYrJgoQNyHs0JGbGHr68vjaEbJs6iDC11lYGbR-P63UThdvHL59M2Wv8k_RugkpKQzPN1QE8uZt6TIzHme1DfzecJapfnIu6kyIC27ywvsKztgL1csyfmdh398BGN9GUCuqa2yg-AzPM24MYm26T1Iqqzise1EBHTSOoRUL7or56NIXaISXnXBrydNb7Kelokb8vxQYuAQlzBKgDtDsLtgcLbGmOgKkzzFge4ZYtL2IO6Of6TaF6IhxM-fwoamUJISHrQWA89HT13iR5p-vIisTprTsC_STf1LT6gmDNhriLKb4u1uoU1mY8KzmIOxGuf6PapTJ9p0XZQfvxeA9u4axzyKUb5JeMeVJ_CdjIzjBoxcJ35H6X&ads.tagname=dtv&ads.islive=1&ads.streamtype=live&ads.vf=20241218';
-        video.play();
+        if (channel.type === "youtube") {
+            document.getElementById('player').innerHTML = `<iframe src="${channel.url}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        } else if (channel.type === "m3u8") {
+            document.getElementById('player').innerHTML = `<video id="video" controls></video>`;
+            const video = document.getElementById('video');
+            
+            if (Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(channel.url);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, function () {
+                    console.log('Manifest loaded, starting playback');
+                    video.play();
+                });
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = channel.url;
+                video.play();
+            }
+        } else if (channel.type === "iframe") {
+            document.getElementById('player').innerHTML = channel.url;
+        }
     }
 </script>
 
