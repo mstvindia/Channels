@@ -111,14 +111,22 @@
         <img src="https://github.com/mstvindia/Channels/blob/main/remote-control.png?raw=true" alt="Channel Icon">
         <select id="channelSelect" onchange="loadChannel()">
             <option value="">Select Channel</option>
-            <option value="1">PUNJABI HITS</option>
-            <option value="2">MASTII MUSIC</option>
-            <option value="3">ZEE BOLLYWORLD</option>
-            <option value="4">PITAARA CHANNEL</option>
-            <option value="5">PITAARA COMEDY</option>
-            <option value="6">COLORS CHANNEL USA</option> <!-- New option for iframe -->
-            <option value="7">PTC NEWS $ (ONLY AUSTRALIA)</option>
-            <option value="8">SONY KAL</option>
+            <option value="1">1. PUNJABI HITS</option>
+            <option value="2">2. MASTII MUSIC</option>
+            <option value="3">3. ZEE BOLLYWORLD</option>
+            <option value="4">4. PITAARA CHANNEL</option>
+            <option value="5">5. PITAARA COMEDY</option>
+            <option value="6">6. COLORS CHANNEL USA</option> <!-- New option for iframe -->
+            <option value="7">7. TABBAR HITS</option>
+            <option value="8">8. SONY KAL</option>
+            <option value="9">9. NEWS18 PUNJABI</option>
+            <option value="10">1O) ZEE PUNJAB/HARYANA/HIMACHAL NEWS</option>
+            <option value="11">11) XUMO BOLLYWOOD & INDIAN CINEMA</option>
+            <option value="12">12) RDC MOVIES</option>
+            <option value="13">13) 9XM</option>
+            <option value="14">14) COLORS CINEPLEX UK</option>
+            <option value="15">15) INDIA TV NEWS</option> <!-- New YouTube option -->
+
         </select>
     </div>
 
@@ -171,16 +179,53 @@
             url: "https://enz.gdplayertv.to/embed/colors-hindi-my/"
         },
         "7": {
-            name: "PTC NEWS $ (ONLY AUSTRALIA)",
+            name: "TABBAR HITS",
             type: "m3u8",
-            url: "https://streaming.ptcplay.com/PTCNEWSINONE/smil:Live.smil/playlist.m3u8"
+            url: "https://d35j504z0x2vu2.cloudfront.net/v1/master/0bc8e8376bd8417a1b6761138aa41c26c7309312/tabbar-hits/index.m3u8"
         },
         "8": {
             name: "SONY KAL",
             type: "m3u8",
             url: "https://spt-sonykal-1-us.lg.wurl.tv/playlist.m3u8"
-            }
-    };
+        },
+        "9": {
+            name: "NEWS18 PUNJABI",
+            type: "m3u8",
+            url: "https://n18syndication.akamaized.net/bpk-tv/News18_Punjab_Haryana_HP_NW18_MOB/output01/index.m3u8?_hdnea_=st=1734542024~exp=1734628424~acl=/*~hmac=decf2ad6902e63728673e193a191e75ab295f5f43cb7cb944d2b39720a798766"
+        },
+        "10": {
+            name: "ZEE PUNJAB/HARYANA/HIMACHAL NEWS",
+            type: "m3u8",
+            url:"https://d31s6sxcz6vnac.cloudfront.net/index_4.m3u8"
+        },
+        "11": {
+            name: "XUMO BOLLYWOOD & INDIAN CINEMA",
+            type: "m3u8",
+            url: "https://dbrb49pjoymg4.cloudfront.net/10001/99991756/hls/master.m3u8?includeAssetTags=true&ads.xumo_channelId=99991756"
+        },
+        "12": {
+            name: "RDC MOVIES",
+            type: "m3u8",
+            url: "https://janya-rdcmovies.akamaized.net/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/230a723f-867d-4fa3-b2d2-a622ba994cd2/main.m3u8"
+        },
+
+        "13": {
+            name: "9XM",
+            type: "m3u8",
+            url: "https://d14c63magvk61v.cloudfront.net/strm/channels/9xm/master.m3u8"
+        },
+        "14": {
+           name: "COLORS CINEPLEX UK",
+           type: "m3u8",
+           url: "https://livegeoroueu.akamaized.net/260723/smil:rishteycineplexuk1.smil/playlist.m3u8"                              
+       },
+
+       "15": { <!-- YouTube Channel -->
+            name: "INDIA TV NEWS",
+            type: "iframe",
+            url: "https://www.youtube.com/embed/Xmm3Kr5P1Uw?si=wvyOqjtQMNBhjHkK"          
+        }    
+};
 
     let iframePlayer = document.getElementById('iframePlayer');
     let hlsInstance = null;
