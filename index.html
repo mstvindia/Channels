@@ -134,9 +134,14 @@
             <option value="21">21) ONLY MUSIC</option>
             <option value="22">22) THE MOVIE CLUB</option>
             <option value="23">23) JOO MUSIC</option>
-            <option value="24">24) INDIA TV NEWS</option> <!-- New YouTube option -->
-
-
+            <option value="24">24) INDIA TV</option>
+            <option value="25">25) AAJ TAK HD</option>
+            <option value="26">26) ZEE NEWS</option>
+            <option value="27">27) NDTV WORLD UK</option>
+            <option value="28">28) CRICKET GOLD</option>
+            <option value="29">29) AXN</option>
+            <option value="30">30) THE Q INDIA</option>
+            <option value="31">31) INDIA TV NEWS</option> <!-- New YouTube option -->
 
         </select>
     </div>
@@ -197,7 +202,7 @@
         "8": {
             name: "SONY KAL",
             type: "m3u8",
-            url: "https://dbrb49pjoymg4.cloudfront.net/10001/99951184/hls/playlist.m3u8?ads.xumo_channelId=99951184"
+            url: "https://spt-sonykal-1-us.lg.wurl.tv/playlist.m3u8"
         },
         "9": {
             name: "NEWS18 PUNJABI",
@@ -260,7 +265,7 @@
            type: "m3u8",
            url: "https://live-dangal2.akamaized.net/liveabr/playlist.m3u8"                              
        },
-        "21": {
+       "21": {
            name: "ONLY MUSIC",
            type: "m3u8",
            url: "https://livestream.unlimitedcdn.com/onlymusic/index.m3u8"                              
@@ -275,14 +280,49 @@
            type: "m3u8",
            url: "https://livecdn.live247stream.com/joomusic/tv/playlist.m3u8"                             
        },
-       "24": { <!-- YouTube Channel -->
+       "24": {
+           name: "INDIA TV (NEWS)",
+           type: "m3u8",
+           url: "https://poclive-indiatvnews.akamaized.net/hlslive/Admin/px0219297/live/digital/master.m3u8"                             
+       },
+       "25": {
+           name: "AAJ TAK HD",
+           type: "m3u8",
+           url: "https://feeds.intoday.in/aajtak/api/aajtakhd/master.m3u8"                             
+       },
+       "26": {
+           name: "ZEE NEWS",
+           type: "m3u8",
+           url: "https://dknttpxmr0dwf.cloudfront.net/index_2.m3u8"                             
+       },
+       "27": {
+           name: "NDTV WORLD UK",
+           type: "m3u8",
+           url: "https://web-ndtv24x7-us.akamaized.net/hls/live/2109282/ndtv24x7us/master.m3u8"                             
+       },
+       "28": {
+           name: "CRICKET GOLD",
+           type: "m3u8",
+           url: "https://cc-bpss9asqfihqh.akamaized.net/v1/manifest/3722c60a815c199d9c0ef36c5b73da68a62b09d1/cc-bpss9asqfihqh/f4ebad6a-22d0-4486-b23e-859f28d1d390/0.m3u8"                             
+       },
+       "29": {
+           name: "AXN",
+           type: "m3u8",
+           url: "https://streamer1.nexgen.bz/AXN/index.m3u8"                             
+       },
+       "30": {
+           name: "THE Q INDIA",
+           type: "m3u8",
+           url: "https://vg-theqlive.akamaized.net/v1/master/611d79b11b77e2f571934fd80ca1413453772ac7/vglive-sk-306905/main.m3u8"                             
+       },
+
+       "31": { <!-- YouTube Channel -->
             name: "INDIA TV NEWS",
             type: "iframe",
             url: "https://www.youtube.com/embed/Xmm3Kr5P1Uw?si=wvyOqjtQMNBhjHkK"          
         }    
 };
-
-    let iframePlayer = document.getElementById('iframePlayer');
+let iframePlayer = document.getElementById('iframePlayer');
     let hlsInstance = null;
 
     function loadChannel() {
@@ -351,3 +391,6 @@
 
 </body>
 </html>
+
+ 
+                                                                                                                                                                                                                                       
